@@ -1,0 +1,18 @@
+#db-pod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: db
+  name: db
+spec:
+  containers:
+  - image: postgres
+    name: db
+    env:
+    - name: POSTGRES_PASSWORD
+      value: password
+    - name: POSTGRES_USER
+      value: rails
+

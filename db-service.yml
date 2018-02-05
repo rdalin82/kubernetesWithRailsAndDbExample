@@ -1,0 +1,14 @@
+#db-service.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: db
+  name: db
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    name: db

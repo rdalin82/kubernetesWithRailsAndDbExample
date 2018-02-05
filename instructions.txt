@@ -1,0 +1,16 @@
+minikube start
+kubectl create -f db-pod.yml
+kubectl get pods
+kubectl create -f db-service.yml
+kubectl create -f web-controller.yml
+kubectl get rc #controller
+kubectl get pods
+kubectl create -f web-service.yml
+kubectl get services
+kubectl get nodes
+
+minikube service web
+
+# when done
+minikube stop
+minikube delete
