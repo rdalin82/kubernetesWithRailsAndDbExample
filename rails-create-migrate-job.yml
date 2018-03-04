@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: web
+spec:
+  template:
+    spec:
+      containers:
+      - name: web
+        image: rdalin/docka:v2
+        command: ['bundle', 'exec', 'rake', 'db:create', '&&',  'rake', 'db:migrate']
+      restartPolicy: Never
+  backoffLimit: 4

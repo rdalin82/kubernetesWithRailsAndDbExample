@@ -1,23 +1,17 @@
-# web-controller.yml
-#
-
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  labels:
-    name: web
-  name: web-controller
+  name: web
 spec:
   replicas: 1
-  selector:
-    name: web
   template:
     metadata:
       labels:
-        name: web
+        app: web
     spec:
       containers:
-      - image: rdalin/docka:v2
+      - name: web
+        image: rdalin/docka:v2
         env:
           - name: SECRET_KEY_BASE
             valueFrom:
@@ -28,7 +22,6 @@ spec:
             value: password
           - name: POSTGRES_USER
             value: rails
-        name: web
         ports:
         - containerPort: 3000
-          name: http-server
+          protocol: TCP
